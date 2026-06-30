@@ -30,6 +30,7 @@ public class googleCallbackServlet extends HttpServlet {
     // Asegúrate de que esta URL coincida exactamente con la Consola de Google Cloud
     private static final String REDIRECT_URI = "http://localhost:8080/A/GoogleCallback";
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
