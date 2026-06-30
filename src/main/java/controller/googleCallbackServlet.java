@@ -60,7 +60,6 @@ public class googleCallbackServlet extends HttpServlet {
             tokenRequest.setParser(new JsonObjectParser(GsonFactory.getDefaultInstance()));
 
             HttpResponse tokenResponse = tokenRequest.execute();
-            @SuppressWarnings("unchecked")
             Map<String, Object> tokenData = tokenResponse.parseAs(Map.class);
             String accessToken = (String) tokenData.get("access_token");
 
@@ -71,7 +70,6 @@ public class googleCallbackServlet extends HttpServlet {
             userInfoRequest.setParser(new JsonObjectParser(GsonFactory.getDefaultInstance()));
 
             HttpResponse userInfoResponse = userInfoRequest.execute();
-            @SuppressWarnings("unchecked")
             Map<String, Object> userInfo = userInfoResponse.parseAs(Map.class);
 
             // Google envía la llave "email", así que la usamos conceptualmente como tal
