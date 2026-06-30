@@ -14,7 +14,7 @@ public class reservaDao {
             String pasarela, String idTransaccion) {
 
         String sqlReserva = "INSERT INTO reservas (id_cliente, nro_hab, fecha_inicio, fecha_fin, nro_ocupantes, estado) "
-                + "VALUES (?, ?, ?, ?, ?, 'Confirmada')";
+                + "VALUES (?, ?, ?, ?, ?, 'Pendiente')";
 
         // codigo_cip → solo se llena si es PagoEfectivo, sino NULL
         String sqlPago = "INSERT INTO pagos_online (id_reserva, id_transaccion_pasarela, codigo_cip, pasarela, monto, moneda, fecha_pago, estado_pago) "
@@ -143,7 +143,7 @@ public class reservaDao {
     }
 
     public boolean eliminarReserva(int idReserva) {
-        String sql = "UPDATE reservas SET estado = 'CANCELADA' WHERE id_reserva = ?";
+        String sql = "UPDATE reservas SET estado = 'Cancelada' WHERE id_reserva = ?";
         try (Connection con = new basededatos().getCon(); PreparedStatement pst = con.prepareStatement(sql)) {
             pst.setInt(1, idReserva);
             return pst.executeUpdate() > 0;
